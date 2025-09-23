@@ -11,7 +11,7 @@ namespace Atividade_LuizHSV_2DSA
     {
         static void Main(string[] args)
         {
-            string[] fila = new string[15];
+            Pessoa[] fila = new Pessoa[15];
             int filaT = 0;
             string op = "";
             while (op != "Q")
