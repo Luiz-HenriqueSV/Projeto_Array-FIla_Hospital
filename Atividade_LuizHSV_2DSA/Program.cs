@@ -23,7 +23,28 @@ namespace Atividade_LuizHSV_2DSA
                 switch (op)
                 {
                     case "1":
-                        Console.WriteLine("Cadatrou paciente!");
+                        if (filaT < 15)
+                        {
+                            Pessoa paciente = new Pessoa();
+                            paciente.Dados();
+
+                            if (paciente.Pref)
+                            {
+                                for (int i = filaT; i > 0; i--)
+                                    fila[i] = fila[i - 1];
+                                fila[0] = paciente;
+                            }
+                            else
+                            {
+                                fila[filaT] = paciente;
+                            }
+
+                            filaT++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Fila cheia!");
+                        }
                         break;
 
                     case "2":
