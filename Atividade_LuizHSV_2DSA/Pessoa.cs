@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Atividade_LuizHSV_2DSA
 {
-    internal class Pessoa
+    class Pessoa
     {
+        public string nome;
+        public bool Pref;
+
+        public void Dados()
+        {
+            Console.WriteLine("Digite o seu Nome: \n");
+            nome = Console.ReadLine();
+            Console.WriteLine("Preferencial? (s/n): ");
+            Pref = Console.ReadLine().ToLower() == "s";
+        }
     }
 }

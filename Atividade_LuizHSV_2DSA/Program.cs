@@ -42,9 +42,6 @@ namespace Atividade_LuizHSV_2DSA
                     default:
                         Console.WriteLine("Opção inválida (ou inexistente)!!");
                         break;
-
-
-                        
                 }
 
                 
