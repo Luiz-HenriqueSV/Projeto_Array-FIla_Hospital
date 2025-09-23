@@ -10,6 +10,15 @@ namespace Atividade_LuizHSV_2DSA
     {
         static void Main(string[] args)
         {
+            string op;
+            Console.WriteLine("Bem vindo(a)!");
+            Console.WriteLine("=========MENU=========");
+            Console.WriteLine("Escolha um entre os seguintes: \n\n 1 - Cadastrar paciente \n\n 2 - Listar paciente \n\n 3 - Atender os pacientes \n\n Q - Sair \n");
+            op = Console.ReadLine();
+
+
+
+
         }
     }
 }
