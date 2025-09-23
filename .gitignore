@@ -1,0 +1,6 @@
+.vs/ 
+*.vsidx 
+bin/ 
+obj/ 
+Debug/ 
+Release/ 
