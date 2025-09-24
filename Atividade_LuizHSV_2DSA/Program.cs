@@ -19,7 +19,7 @@ namespace Atividade_LuizHSV_2DSA
             while (op != "Q")
             {
                 Console.WriteLine("            MENU             ");
-                Console.WriteLine("Escolha um entre os seguintes: \n\n 1 - Cadastrar paciente \n\n 2 - Listar paciente \n\n 3 - Atender os pacientes \n\n Q - Sair \n");
+                Console.WriteLine("Escolha um entre os seguintes: \n\n 1 - Cadastrar paciente \n\n 2 - Listar paciente \n\n 3 - Atender os pacientes \n\n 4 - Alterar paciente \n\n Q - Sair \n");
                 op = Console.ReadLine().ToUpper();
                 switch (op)
                 {
@@ -71,6 +71,41 @@ namespace Atividade_LuizHSV_2DSA
                         {
                             Console.WriteLine("Fila Vazia!");
                         }
+                        break;
+
+
+                    case "4":
+                        if (filaT > 0)
+                        {
+                            Console.WriteLine("Digite o nome do paciente para a alteração: ");
+                            string Busca = Console.ReadLine();
+                            bool encontrado = false;
+                            for (int i = 0; i < filaT; i++)
+                            {
+                                if (fila[i].nome == Busca)
+                                {
+                                    Console.WriteLine("Paciente encontrado, digite os novos dados. \n");
+                                    fila[i].Dados();
+                                    encontrado = true;
+                                    if (fila[i].Pref)
+                                    {
+                                        int j = i;
+                                        while (j > 0 && !fila[j - 1].Pref)
+                                        {
+                                            Pessoa aux = fila[j - 1];
+                                            fila[j - 1] = fila[j];
+                                            fila[j] = aux;
+                                            j--;
+                                        }
+                                    }
+
+                                    break;
+                                }
+                            }
+                            if (!encontrado)
+                                Console.WriteLine("Paciente não encontrado.");
+                        }
+
                         break;
 
                     case "Q":
