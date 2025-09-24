@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,9 @@ namespace Atividade_LuizHSV_2DSA
             Pessoa[] fila = new Pessoa[15];
             int filaT = 0;
             string op = "";
+            Console.WriteLine("Bem vindo(a)!");
             while (op != "Q")
             {
-                Console.WriteLine("Bem vindo(a)!");
                 Console.WriteLine("            MENU             ");
                 Console.WriteLine("Escolha um entre os seguintes: \n\n 1 - Cadastrar paciente \n\n 2 - Listar paciente \n\n 3 - Atender os pacientes \n\n Q - Sair \n");
                 op = Console.ReadLine().ToUpper();
@@ -51,15 +52,31 @@ namespace Atividade_LuizHSV_2DSA
                         Console.WriteLine("\n---Lista---\n");
                         for (int i = 0; i < filaT; i++)
                         {
+                            if (fila[i].Pref)
+                                Console.WriteLine((i + 1) + " - " + fila[i].nome + " (Pref)");
+                            else Console.WriteLine((i + 1) + " - " + fila[i].nome);
                         }
                         break;
+
                     case "3":
-                        Console.WriteLine("Atendimento");
+                        if (filaT > 0)
+                        {
+                            Console.WriteLine("Atendido: " + fila[0].nome);
+                            for (int i = 0; i < filaT - 1; i++)
+                                fila[i] = fila[i + 1];
+                            fila[filaT - 1] = null; 
+                            filaT--;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Fila Vazia!");
+                        }
                         break;
 
-                    case "4":
+                    case "Q":
                         Console.WriteLine("Encerrando...");
                         break;
+
                     default:
                         Console.WriteLine("Opção inválida (ou inexistente)!!");
                         break;
