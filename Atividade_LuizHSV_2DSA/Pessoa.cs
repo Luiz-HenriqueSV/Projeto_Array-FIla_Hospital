@@ -10,6 +10,7 @@ namespace Atividade_LuizHSV_2DSA
     {
         public string nome;
         public bool Pref;
+        public int OrdCad;
 
         public void Dados()
         {

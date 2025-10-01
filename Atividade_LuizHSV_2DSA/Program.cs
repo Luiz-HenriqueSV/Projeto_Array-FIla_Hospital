@@ -15,6 +15,8 @@ namespace Atividade_LuizHSV_2DSA
             Pessoa[] fila = new Pessoa[15];
             int filaT = 0;
             string op = "";
+            int ordG = 0;
+            Program p = new Program();
             Console.WriteLine("Bem vindo(a)!");
             while (op != "Q")
             {
@@ -28,6 +30,8 @@ namespace Atividade_LuizHSV_2DSA
                         {
                             Pessoa paciente = new Pessoa();
                             paciente.Dados();
+                            paciente.OrdCad = ordG++;
+
 
                             if (paciente.Pref)
                             {
@@ -51,6 +55,7 @@ namespace Atividade_LuizHSV_2DSA
                         break;
 
                     case "2":
+                        p.OrganizarFila(fila, filaT);
                         Console.WriteLine("\n---Lista---\n");
                         for (int i = 0; i < filaT; i++)
                         {
@@ -126,5 +131,55 @@ namespace Atividade_LuizHSV_2DSA
                 }    
             }
         }
+
+        void OrganizarFila(Pessoa[] fila, int filaT)
+        {
+            for (int i = 0; i < filaT - 1; i++)
+            {
+                for (int j = 0; j < filaT - 1 - i; j++)
+                {
+                    if (!fila[j].Pref && fila[j + 1].Pref)
+                    {
+                        Pessoa temp = fila[j];
+                        fila[j] = fila[j + 1];
+                        fila[j + 1] = temp;
+                    }
+                }
+            }
+            int prefCount = 0;
+            for (int i = 0; i < filaT; i++)
+            {
+                if (fila[i].Pref) prefCount++;
+                else break;
+            }
+
+            for (int i = 0; i < prefCount - 1; i++)
+            {
+                for (int j = 0; j < prefCount - 1 - i; j++)
+                {
+                    if (fila[j].OrdCad > fila[j + 1].OrdCad)
+                    {
+                        Pessoa temp = fila[j];
+                        fila[j] = fila[j + 1];
+                        fila[j + 1] = temp;
+                    }
+                }
+            }
+
+            for (int i = prefCount; i < filaT - 1; i++)
+            {
+                for (int j = prefCount; j < filaT - 1 - (i - prefCount); j++)
+                {
+                    if (fila[j].OrdCad> fila[j + 1].OrdCad)
+                    {
+                        Pessoa temp = fila[j];
+                        fila[j] = fila[j + 1];
+                        fila[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+
     }
 }
