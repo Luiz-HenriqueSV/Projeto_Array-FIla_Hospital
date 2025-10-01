@@ -16,7 +16,20 @@ namespace Atividade_LuizHSV_2DSA
             Console.WriteLine("Digite o seu Nome: \n");
             nome = Console.ReadLine();
             Console.WriteLine("Preferencial? (s/n): ");
-            Pref = Console.ReadLine().ToLower() == "s";
+            string resp = Console.ReadLine().ToLower();
+
+            if (resp == "s")
+            {
+                Pref = true;
+            }
+            else if (resp == "n")
+            {
+                Pref = false;
+            }
+            else
+            {
+                Console.WriteLine("Opção Inválida! Digite apenas 's' ou 'n'");
+            }
         }
     }
 }

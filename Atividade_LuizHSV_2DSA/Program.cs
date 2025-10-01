@@ -32,7 +32,9 @@ namespace Atividade_LuizHSV_2DSA
                             if (paciente.Pref)
                             {
                                 for (int i = filaT; i > 0; i--)
+                                {
                                     fila[i] = fila[i - 1];
+                                }
                                 fila[0] = paciente;
                             }
                             else
@@ -53,7 +55,9 @@ namespace Atividade_LuizHSV_2DSA
                         for (int i = 0; i < filaT; i++)
                         {
                             if (fila[i].Pref)
+                            {
                                 Console.WriteLine((i + 1) + " - " + fila[i].nome + " (Pref)");
+                            }
                             else Console.WriteLine((i + 1) + " - " + fila[i].nome);
                         }
                         break;
@@ -63,7 +67,9 @@ namespace Atividade_LuizHSV_2DSA
                         {
                             Console.WriteLine("Atendido: " + fila[0].nome);
                             for (int i = 0; i < filaT - 1; i++)
+                            {
                                 fila[i] = fila[i + 1];
+                            }
                             fila[filaT - 1] = null; 
                             filaT--;
                         }
@@ -103,7 +109,9 @@ namespace Atividade_LuizHSV_2DSA
                                 }
                             }
                             if (!encontrado)
+                            {
                                 Console.WriteLine("Paciente não encontrado.");
+                            }
                         }
 
                         break;
