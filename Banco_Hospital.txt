@@ -1,0 +1,7 @@
+create database if not exists banco_Hospital;
+use banco_hospital;
+create table if not exists Pacientes(
+ID_Paciente int auto_increment not null primary key,
+idade int not null,
+nome varchar(100)
+);
