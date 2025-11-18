@@ -3,5 +3,7 @@ use banco_hospital;
 create table if not exists Pacientes(
 ID_Paciente int auto_increment not null primary key,
 idade int not null,
-nome varchar(100)
+nome varchar(100),
+preferencial boolean default false,
+lugar_fila enum("Aguardando", "Atendido") default "Aguardando"
 );
