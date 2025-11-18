@@ -10,7 +10,7 @@ namespace ATIVIDADE_LUIZHSV_BDHOSP
 {
     internal class Program
     {
-        static string conexao = "server=localhost;database=banco_Hospital;user=root;password=root";
+        static string connection = "server=localhost;database=banco_Hospital;user=root;password=root";
         static void Main(string[] args)
         {
             string op = "";
@@ -42,11 +42,50 @@ namespace ATIVIDADE_LUIZHSV_BDHOSP
                 }
             }
         }
-        void Cadastrar()
+        static void Cadastrar()
+        {
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("Idade: ");
+            int idade = int.Parse(Console.ReadLine());
+            Console.Write("É preferencial? (s/n): ");
+            bool preferencial = Console.ReadLine().ToLower() == "s";
+
+            using (var con = new MySqlConnection(connection))
+            {
+                con.Open();
+                var cmd = new MySqlCommand("INSERT INTO Pacientes (nome, idade, preferencial) VALUES (@n, @i, @p)", con);
+                cmd.Parameters.AddWithValue("@n", nome);
+                cmd.Parameters.AddWithValue("@i", idade);
+                cmd.Parameters.AddWithValue("@p", preferencial);
+                cmd.ExecuteNonQuery();
+            }
+            Console.WriteLine("Paciente cadastrado com sucesso!!");
+        }
+        static void Listar()
+        {
+            using (var con = new MySqlConnection(connection))
+            {
+                con.Open();
+                string sql = "SELECT * FROM Pacientes WHERE lugar_fila='Aguardando' ORDER BY preferencial DESC, ID_Paciente ASC;";
+                var cmd = new MySqlCommand(sql, con);
+                var reader = cmd.ExecuteReader();
+
+                Console.WriteLine("\n      FILA DE PACIENTES       ");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"ID: {reader["id"]} | Nome: {reader["nome"]} | Idade: {reader["idade"]} | Preferencial: {(Convert.ToBoolean(reader["preferencial"]) ? "Sim" : "Não")}");
+                }
+            }
+
+        }
+
+        static void Atender()
         {
 
         }
-         void Listar()
+
+        static void Alterar()
         {
 
         }
